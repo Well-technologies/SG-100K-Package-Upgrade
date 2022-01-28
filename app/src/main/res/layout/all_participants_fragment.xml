@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="org.singapore.ghru.ui.dashboard.allparticipants.AllParticipantsViewModel" />
+
+        <variable
+            name="homeViewModel"
+            type="org.singapore.ghru.ui.dashboard.allparticipants.AllParticipantsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        tools:context="org.singapore.ghru.SettingActivity"
+        tools:ignore="MergeRootFrame"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?colorPrimary"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/screenin_status_by_participant"
+                app:titleTextColor="@color/white"
+                app:titleMarginStart="@dimen/width_100"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            tools:ignore="MissingConstraints"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_margin="@dimen/margin_15">
+
+                <SearchView
+                    android:id="@+id/participantSearchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text=""
+                    android:queryHint="@string/participant_search_hint_text"
+                    android:textSize="@dimen/medium_font_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditTextSearch"
+                    android:layout_width="0dp"
+                    android:layout_weight="9"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:layout_marginEnd="@dimen/margin_10"
+                    android:drawablePadding="@dimen/margin_normal"
+                    android:hint="@string/participant_search_hint_text"
+                    android:inputType="textNoSuggestions"
+                    android:padding="@dimen/margin_normal"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black" />
+
+                <ImageButton
+                    android:id="@+id/searchButton"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_icon_search"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/margin_20"
+                    android:background="@drawable/primary_background"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_24"
+            android:layout_marginTop="@dimen/icon_size"
+            android:layout_marginEnd="@dimen/margin_32"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/all_participants_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/all_stations_item"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginBottom="@dimen/height_60"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            android:background="@color/gray"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:weightSum="5.5"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:layout_marginStart="@dimen/margin_32"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:id="@+id/firstButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/first_button_text"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/shape_rounded_corners_4dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/previousButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/previous_button_text"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/shape_rounded_corners_4dp"/>
+
+                <TextView
+                    android:id="@+id/paginationText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black_effective"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/nextButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/next_button_text"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/shape_rounded_corners_4dp"
+                    tools:ignore="InvalidId" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/lastButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/last_button_text"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/shape_rounded_corners_4dp"
+                    tools:ignore="InvalidId" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.octa.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/fundoscopy_scan_barcode">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraFragment"
+            app:clearTask="true"
+            app:destination="@id/questionnaireFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualFragment"
+            app:destination="@id/manualFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualFragment"
+        android:name="org.singapore.ghru.ui.octa.manualentry.ManualEntryOctaFragment"
+        android:label="ManualEntryOctaFragment"
+        tools:layout="@layout/fundoscopy_manual_barcode_fragment">
+        <action
+            android:id="@+id/action_manual_to_contraFragment"
+            app:clearTask="true"
+            app:destination="@id/questionnaireFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/questionnaireFragment"
+        android:name="org.singapore.ghru.ui.octa.contra.OctaQuestionsFragment"
+        android:label="OctaQuestionsFragment"
+        tools:layout="@layout/fundoscopy_questions_fragment">
+
+        <action
+            android:id="@+id/action_questionnaireFragment_to_readingFragment"
+            app:destination="@id/readingFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/readingFragment"
+        android:name="org.singapore.ghru.ui.octa.reading.OctaReadingFragment"
+        android:label="OctaReadingFragment"
+        tools:layout="@layout/trace_fragment">
+
+    </fragment>
+
+
+</navigation>

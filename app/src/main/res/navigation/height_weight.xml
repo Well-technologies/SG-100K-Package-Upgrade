@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heightWeight"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.heightweight.scanbarcode.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/HeightWeightContraFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.heightweight.manualentry.ManualEntryHeightWeightFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualScanFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/HeightWeightContraFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HeightWeightContraFragment"
+        android:name="org.singapore.ghru.ui.heightweight.contraindication.HeightWeightQuestionnaireFragment"
+        android:label="ContraindicationFragment"
+        tools:layout="@layout/height_weight_contraindication_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_heightWeightHomeFragment"
+            app:destination="@id/HeightWeightHomeFragment" />
+
+<!--        need to remove this
+                app:clearTask="true"
+                app:launchSingleTop="true"
+            two lines inside the action due to crash-->
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HeightWeightHomeFragment"
+        android:name="org.singapore.ghru.ui.heightweight.HeightWeightHomeFragment"
+        android:label="HeightWeightHomeFragment"
+        tools:layout="@layout/height_weight_home_fragment">
+
+        <action
+            android:id="@+id/action_HeightWeightHomeFragment_to_HeightFragment"
+            app:destination="@id/HeightFragment" />
+        <action
+            android:id="@+id/action_HeightWeightHomeFragment_to_WeightFragment"
+            app:destination="@id/WeightFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HeightFragment"
+        android:name="org.singapore.ghru.ui.heightweight.height.HeightFragment"
+        android:label="HeightFragment"
+        tools:layout="@layout/height_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/WeightFragment"
+        android:name="org.singapore.ghru.ui.heightweight.weight.WeightFragment"
+        android:label="WeightFragment"
+        tools:layout="@layout/weight_fragment">
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/HeightWeightHomeFragment" />
+
+</navigation>

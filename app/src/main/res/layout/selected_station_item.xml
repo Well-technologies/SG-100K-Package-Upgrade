@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homeItem"
+            type="org.singapore.ghru.vo.ParticipantListItem" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_marginStart="@dimen/margin_24"
+            android:foreground="?attr/selectableItemBackground">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{homeItem.screening_id}"
+                android:textColor="#171717"
+                android:textSize="16sp"
+                tools:text="repository name"
+                android:layout_marginStart="@dimen/margin_15"/>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{homeItem.registerd_date}"
+                android:textColor="#171717"
+                android:textSize="16sp"
+                tools:text="registered date"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/imageViewIcon"
+                image="@{homeItem.statusId}"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/imageview"
+                android:layout_gravity="center"/>
+
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_seperator"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_marginStart="@dimen/margin_24"/>
+
+    </LinearLayout>
+
+
+</layout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/QuestionnaireListFragmentdd"
+    app:startDestination="@id/WebFragment">
+
+
+    <fragment
+            android:id="@+id/QuestionnaireListFragment"
+            android:name="org.singapore.ghru.ui.hlqself.languagelist.QuestionnaireListFragment"
+            android:label="WebFragment"
+            tools:layout="@layout/questionnaire_list_fragment">
+
+        <action android:id="@+id/action_QuestionnaireListFragment_to_ScanBarcodeFragment"
+                app:destination="@id/ScanBarcodeFragment"/>
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/ScanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.hlqself.scanbarcode.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_ScanBarcodeFragment_to_WebFragment"
+            app:clearTask="true"
+            app:destination="@id/WebFragment" />
+
+        <action
+            android:id="@+id/action_ScanBarcodeFragment_to_ManualEntryBarcodeFragment"
+            app:destination="@id/ManualEntryBarcodeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ManualEntryBarcodeFragment"
+        android:name="org.singapore.ghru.ui.hlqself.scanbarcode.manualentry.ManualEntryBarcodeFragment"
+        android:label="ManualEntryBarcodeFragment"
+        tools:layout="@layout/register_patient_barcode_manualentry_fragment">
+
+        <action
+            android:id="@+id/action_ManualEntryBarcodeFragment_to_WebFragment"
+            app:clearTask="true"
+            app:destination="@id/WebFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/WebFragment"
+        android:name="org.singapore.ghru.ui.hlqself.WebFragment"
+        android:label="WebFragment"
+        tools:layout="@layout/web_fragment">
+
+        <action
+            android:id="@+id/action_WebFragment_to_ConfirmFragment"
+            app:clearTask="true"
+            app:destination="@id/ConfirmationFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/ConfirmationFragment"
+        android:name="org.singapore.ghru.ui.hlqself.confirmation.QuestionnaireConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/questionnaire_confirmation_fragment">
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_confirmationFragment"
+        app:destination="@id/ConfirmationFragment" />
+
+
+</navigation>

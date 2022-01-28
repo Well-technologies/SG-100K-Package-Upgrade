@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/heightWeight"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.dxa.scanbarcode.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_dxaContraFragment"
+            app:clearTask="true"
+            app:destination="@id/dxaContraFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.dxa.manualentry.ManualEntryDXAFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualScanFragment_to_dxaContraFragment"
+            app:clearTask="true"
+            app:destination="@id/dxaContraFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dxaHomeFragment"
+        android:name="org.singapore.ghru.ui.dxa.DXAHomeFragment"
+        android:label="DXAHomeFragment"
+        tools:layout="@layout/d_x_a_home_fragment">
+
+<!--        <action-->
+<!--            android:id="@+id/action_contraFragment_to_heightWeightHomeFragment"-->
+<!--            app:clearTask="true"-->
+<!--            app:destination="@id/HeightWeightHomeFragment"-->
+<!--            app:launchSingleTop="true" />-->
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/dxaContraFragment"
+        android:name="org.singapore.ghru.ui.dxa.contra.DXAQuestionsFragment"
+        android:label="DXAQuestionsFragment"
+        tools:layout="@layout/dxa_questionnaire_fragment">
+
+        <action
+            android:id="@+id/action_dxaContraFragment_to_dxaHomeFragment"
+            app:clearTask="true"
+            app:destination="@id/dxaHomeFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+</navigation>

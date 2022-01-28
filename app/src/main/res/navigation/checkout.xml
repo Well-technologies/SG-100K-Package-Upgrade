@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/checkout_home.xml"
+    app:startDestination="@id/scnBarcodeFragment">
+
+    <fragment
+        android:id="@+id/scnBarcodeFragment"
+        android:name="org.singapore.ghru.ui.checkout.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_participantFragment"
+            app:clearTask="true"
+            app:destination="@id/participantFragment"
+            app:launchSingleTop="true" />
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.checkout.manualentry.ManualEntryCheckoutFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+
+        <action
+            android:id="@+id/action_manualEntryFragment_to_participantFragment"
+            app:clearTask="true"
+            app:destination="@id/participantFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/participantFragment"
+        android:name="org.singapore.ghru.ui.checkout.selectedparticipant.SelectedParticipantFragment"
+        android:label="SelectedParticipantFragment"
+        tools:layout="@layout/selected_participant_fragment">
+
+        <action
+            android:id="@+id/action_selectedParticipantFragment_to_CheckoutCompletionFragment"
+            app:clearTask="true"
+            app:destination="@id/checkoutCompletionFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutCompletionFragment"
+        android:name="org.singapore.ghru.ui.checkout.completion.CheckoutCompletionFragment"
+        android:label="CheckoutCompletionFragment"
+        tools:layout="@layout/checkout_completion_fragment">
+
+        <action
+            android:id="@+id/action_checkoutCompletionFragment_to_BankDetailsFragment"
+            app:clearTask="true"
+            app:destination="@id/checkoutBankDetailsFragment"
+            app:launchSingleTop="true" />
+
+        <action
+            android:id="@+id/action_selectedCompletionFragment_to_VoucherDetailsFragment"
+            app:clearTask="true"
+            app:destination="@id/checkoutVoucherDetailsFragment"
+            app:launchSingleTop="true" />
+
+        <action
+            android:id="@+id/action_checkoutCompletionFragment_to_PaymentInformationFragment"
+            app:destination="@id/checkoutPaymentInformationFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutBankDetailsFragment"
+        android:name="org.singapore.ghru.ui.checkout.bankdetails.BankDetailsFragment"
+        android:label="BankDetailsFragment"
+        tools:layout="@layout/bank_details_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutVoucherDetailsFragment"
+        android:name="org.singapore.ghru.ui.checkout.voucherdetails.VoucherDetailsFragment"
+        android:label="VoucherDetailsFragment"
+        tools:layout="@layout/voucher_details_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutVoucherScanFragment"
+        android:name="org.singapore.ghru.ui.checkout.voucherdetails.scanbarcode.VoucherScanBarcodeFragment"
+        android:label="VoucherScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutVoucherScanOneFragment"
+        android:name="org.singapore.ghru.ui.checkout.voucherdetails.scanbarcode1.VoucherScanBarcodeOneFragment"
+        android:label="VoucherScanBarcodeOneFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutVoucherScanTwoFragment"
+        android:name="org.singapore.ghru.ui.checkout.voucherdetails.scanbarcode2.VoucherScanBarcodeTwoFragment"
+        android:label="VoucherScanBarcodeTwoFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutVoucherManualEntryFragment"
+        android:name="org.singapore.ghru.ui.checkout.voucherdetails.manualentry.ManualEntryVoucherFragment"
+        android:label="ManualEntryVoucherFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutPaymentCompletionFragment"
+        android:name="org.singapore.ghru.ui.checkout.completion.paymentcompletion.PaymentCompletionFragment"
+        android:label="PaymentCompletionFragment"
+        tools:layout="@layout/payment_completion_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutPaymentInformationFragment"
+        android:name="org.singapore.ghru.ui.checkout.paymentinformation.PaymentInformationFragment"
+        android:label="PaymentInformationFragment"
+        tools:layout="@layout/payment_information_fragment">
+
+        <action
+            android:id="@+id/action_checkoutPaymentInformationFragment_to_checkoutPaymentReviewFragment"
+            app:destination="@id/checkoutPaymentReviewFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutPaymentReviewFragment"
+        android:name="org.singapore.ghru.ui.checkout.paymentinformation.paymentreview.PaymentReviewFragment"
+        android:label="PaymentReviewFragment"
+        tools:layout="@layout/payment_review_fragment">
+
+        <action
+            android:id="@+id/action_checkoutPaymentReviewFragment_to_checkoutVoucherDetailsFragment"
+            app:destination="@id/checkoutVoucherDetailsFragment"/>
+
+        <action
+            android:id="@+id/action_checkoutPaymentReviewFragment_to_checkoutGiroConfirmationFragment"
+            app:destination="@id/checkoutGiroConfirmationFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutGiroConfirmationFragment"
+        android:name="org.singapore.ghru.ui.checkout.paymentinformation.giroconfirmation.GiroConfirmationFragment"
+        android:label="GiroConfirmationFragment"
+        tools:layout="@layout/giro_confirmation_fragment">
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_CheckoutCompletionFragment"
+        app:destination="@id/checkoutCompletionFragment" />
+
+    <action
+        android:id="@+id/action_global_VoucherScanFragment"
+        app:destination="@id/checkoutVoucherScanFragment" />
+
+    <action
+        android:id="@+id/action_global_VoucherManualEntryFragment"
+        app:destination="@id/checkoutVoucherManualEntryFragment" />
+
+    <action
+        android:id="@+id/action_global_PaymentCompletionFragment"
+        app:destination="@id/checkoutPaymentCompletionFragment" />
+
+    <action
+        android:id="@+id/action_global_VoucherDetailsFragment"
+        app:destination="@id/checkoutVoucherDetailsFragment" />
+
+    <action
+        android:id="@+id/action_global_VoucherScanOneFragment"
+        app:destination="@id/checkoutVoucherScanOneFragment" />
+
+    <action
+        android:id="@+id/action_global_VoucherScanTwoFragment"
+        app:destination="@id/checkoutVoucherScanTwoFragment" />
+
+</navigation>

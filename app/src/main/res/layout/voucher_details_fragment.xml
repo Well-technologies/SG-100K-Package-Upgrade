@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="participant"
+            type="org.singapore.ghru.vo.request.VoucherRequest" />
+
+        <variable
+                name="isCancel"
+                type="boolean" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?colorPrimary"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/checkout_voucher_details_title"
+                app:titleTextColor="@color/white"
+                app:titleMarginStart="@dimen/width_130"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_32"
+            android:layout_marginEnd="@dimen/margin_32"
+            android:layout_marginTop="@dimen/icon_size">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_32"
+                android:fontFamily="@font/roboto"
+                android:textColor="#000000"
+                android:textSize="@dimen/default_font_size"
+                android:text="@string/checkout_voucher_text2"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width_100"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_32">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/medium_font_size"
+                    android:text="@string/checkout_voucher1"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_size"
+                    android:orientation="horizontal"
+                    android:weightSum="6"
+                    android:layout_marginTop="@dimen/margin_10">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/voucher1Layout"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/shape_rounded_corners_4dp"
+                        android:gravity="start"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="@color/enum_hint_color"
+                        android:paddingStart="@dimen/margin_20"
+                        android:paddingEnd="@dimen/margin_20">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/voucher1EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/transparent"
+                            android:gravity="center_vertical|start"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_font_size"
+                            android:inputType="numberDecimal"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/voucher1Icon"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/imageview"
+                        android:layout_gravity="center"
+                        android:background="@drawable/barcode_36"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width_100"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_20">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/medium_font_size"
+                    android:text="@string/checkout_voucher2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_size"
+                    android:orientation="horizontal"
+                    android:weightSum="6"
+                    android:layout_marginTop="@dimen/margin_10">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/voucher2Layout"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/shape_rounded_corners_4dp"
+                        android:gravity="start"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="@color/enum_hint_color"
+                        android:paddingStart="@dimen/margin_20"
+                        android:paddingEnd="@dimen/margin_20">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/voucher2EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/transparent"
+                            android:gravity="center_vertical|start"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_font_size"
+                            android:inputType="numberDecimal"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/voucher2Icon"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/imageview"
+                        android:layout_gravity="center"
+                        android:background="@drawable/barcode_36"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width_100"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_20">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/medium_font_size"
+                    android:text="@string/checkout_voucher3"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_size"
+                    android:orientation="horizontal"
+                    android:weightSum="6"
+                    android:layout_marginTop="@dimen/margin_10">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/voucher3Layout"
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/shape_rounded_corners_4dp"
+                        android:gravity="start"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="@color/enum_hint_color"
+                        android:paddingStart="@dimen/margin_20"
+                        android:paddingEnd="@dimen/margin_20">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/voucher3EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/transparent"
+                            android:gravity="center_vertical|start"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_font_size"
+                            android:inputType="numberDecimal"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/voucher3Icon"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/imageview"
+                        android:layout_gravity="center"
+                        android:background="@drawable/barcode_36"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="@dimen/margin_24"
+                android:background="@drawable/ic_comment_background"
+                android:gravity="top|start"
+                android:hint="@string/comments_notes_optional"
+                android:inputType="textCapWords|textCapSentences|textPersonName"
+                android:padding="24dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/enum_hint_color"
+                android:textSize="@dimen/default_font_size" />
+
+            <Button
+
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_button_fill_primary"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:paddingEnd="@dimen/margin_normal"
+                android:text="@string/app_button_submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font_size"
+                android:layout_marginTop="@dimen/margin_32"/>
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="@dimen/margin_24"
+                android:background="@drawable/ic_button_revisited_household"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/app_button_go_back"
+                android:textColor="@color/defult_blue"
+                android:textSize="@dimen/default_font_size"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</layout>

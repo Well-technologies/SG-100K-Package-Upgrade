@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gripStrength"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.cognition.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/CognitionContraFragment"
+            app:launchSingleTop="true" />
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.cognition.manualentry.ManualEntryCognitionFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+
+        <action
+            android:id="@+id/action_manualScanFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/CognitionContraFragment"
+            app:launchSingleTop="true" />
+
+        <action
+            android:id="@+id/action_manualScanFragment_to_confirmationFragment"
+            app:clearTask="true"
+            app:destination="@id/ConfirmationFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CognitionContraFragment"
+        android:name="org.singapore.ghru.ui.cognition.contraindication.CognitionQuestionnaireFragment"
+        android:label="ContraindicationFragment"
+        tools:layout="@layout/cognition_contraindication_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_confirmationFragment"
+            app:destination="@id/ConfirmationFragment" />
+
+        <action
+            android:id="@+id/action_contraFragment_to_cogGuideFragment"
+            app:destination="@id/CognitionGuideFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CognitionGuideFragment"
+        android:name="org.singapore.ghru.ui.cognition.guide.CognitionGuideFragment"
+        android:label="CognitionGuideFragment"
+        tools:layout="@layout/cognition_guide_fragment">
+
+        <action
+            android:id="@+id/action_cog_GuideFragment_to_ConfirmationFragment"
+            app:destination="@id/ConfirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ConfirmationFragment"
+        android:name="org.singapore.ghru.ui.cognition.confirmation.CognitionConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/cognition_confirmation_fragment">
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_CognitionContraFragment"
+        app:destination="@id/ConfirmationFragment" />
+
+</navigation>

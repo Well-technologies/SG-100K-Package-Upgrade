@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isCancel"
+            type="boolean" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?colorPrimary"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/checkout_payment_information_title"
+                app:titleTextColor="@color/white"
+                app:titleMarginStart="@dimen/width_130"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/height_60"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_24">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/icon_size"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/medium_font_size"
+                    android:text="@string/checkout_payment_information_text1"/>
+
+                <CheckBox
+                    android:id="@+id/heliosCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkout_check1"
+                    android:textSize="@dimen/medium_font_size"
+                    android:paddingStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_32"/>
+
+                <CheckBox
+                    android:id="@+id/abcCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkout_check2"
+                    android:textSize="@dimen/medium_font_size"
+                    android:paddingStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/xyzCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkout_check3"
+                    android:textSize="@dimen/medium_font_size"
+                    android:paddingStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:visibility="gone"/>
+
+                <CheckBox
+                    android:id="@+id/oneTwoThreeCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkout_check4"
+                    android:textSize="@dimen/medium_font_size"
+                    android:paddingStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_28"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4.5"
+                    android:layout_marginTop="@dimen/margin_32">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/medium_font_size"
+                        android:text="@string/checkout_payment_information_text2"/>
+
+                    <TextView
+                        android:id="@+id/toBePaidTextView"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/medium_font_size"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4.5"
+                    android:layout_marginTop="@dimen/margin_32">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/medium_font_size"
+                        android:text="@string/checkout_payment_information_text3"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/dollarTextLayout"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/border_rounded_corner_with_blue_color"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/margin_normal"
+                        android:paddingEnd="@dimen/margin_normal"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="@color/enum_hint_color">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/sg_dollar_edit_text"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/roboto"
+                            android:textSize="@dimen/medium_font_size"
+                            android:textAlignment="center"
+                            android:background="@color/transparent"
+                            android:layout_width="match_parent"
+                            android:gravity="center_vertical|start"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            app:validateEmpty="@{true}"
+                            app:validateRegex='@{"^(?!\\s)^([a-zA-Z0-9 !-~]){1,}$"}'/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/sg_dollar_edit_text"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="@dimen/icon_size"-->
+<!--                        android:layout_weight="2"-->
+<!--                        android:fontFamily="@font/roboto"-->
+<!--                        android:background="@drawable/border_rounded_corner_with_blue_color"-->
+<!--                        android:textSize="@dimen/medium_font_size"-->
+<!--                        android:inputType="number"-->
+<!--                        android:textAlignment="center"/>-->
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="@dimen/margin_32"
+                    android:background="@drawable/ic_comment_background"
+                    android:gravity="top|start"
+                    android:hint="@string/comments_notes_optional"
+                    android:inputType="textCapWords|textCapSentences|textPersonName"
+                    android:padding="24dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/enum_hint_color"
+                    android:textSize="@dimen/default_font_size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/height_60"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/reviewButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:background="@drawable/ic_button_fill_primary"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/review"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/default_font_size"/>
+
+                    <Button
+                        android:id="@+id/backButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="@dimen/margin_24"
+                        android:background="@drawable/border_rounded_corner_with_blue_color"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:text="@string/app_back"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/default_font_size" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</layout>

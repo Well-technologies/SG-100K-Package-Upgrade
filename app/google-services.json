@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "230448198043",
+    "firebase_url": "https://nhealth-app-sg.firebaseio.com",
+    "project_id": "nhealth-app-sg",
+    "storage_bucket": "nhealth-app-sg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230448198043:android:a0265c6ee12b87c317713e",
+        "android_client_info": {
+          "package_name": "org.singapore.ghru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230448198043-d3uf50vjp96260kgcfdm9nbq9t1kek7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0dQPaKQRUcG3SlaORR6WhJZc-ZjIfMG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230448198043-d3uf50vjp96260kgcfdm9nbq9t1kek7f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

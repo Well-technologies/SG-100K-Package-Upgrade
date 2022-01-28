@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/treadmill"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.treadmill.scanbarcode.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/contraindicationFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.treadmill.manualentry.ManualEntryTreadmillFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualScanFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/contraindicationFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/contraindicationFragment"
+        android:name="org.singapore.ghru.ui.treadmill.contraindications.TreadmillContraFragment"
+        android:label="TreadmillContraFragment"
+        tools:layout="@layout/treadmill_contra_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_beforeTestFragment"
+            app:destination="@id/beforeTestFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/beforeTestFragment"
+        android:name="org.singapore.ghru.ui.treadmill.beforetest.TreadmillBeforeTestFragment"
+        android:label="TreadmillBeforeTestFragment"
+        tools:layout="@layout/treadmill_before_test_fragment">
+
+        <action
+            android:id="@+id/action_beforeTestFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="org.singapore.ghru.ui.treadmill.TreadmillMainFragment"
+        android:label="TreadmillMainFragment"
+        tools:layout="@layout/treadmill_main_fragment">
+
+        <action
+            android:id="@+id/action_mainFragment_to_afterTestFragment"
+            app:destination="@id/afterTestFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_bpFragment"
+            app:destination="@id/bpFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bpFragment"
+        android:name="org.singapore.ghru.ui.treadmill.bp.TreadmillBPFragment"
+        android:label="TreadmillBPFragment"
+        tools:layout="@layout/treadmill_bp_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/afterTestFragment"
+        android:name="org.singapore.ghru.ui.treadmill.aftertest.TreadmillAfterTestFragment"
+        android:label="TreadmillAfterTestFragment"
+        tools:layout="@layout/treadmill_after_test_fragment">
+
+        <!--        <action-->
+        <!--            android:id="@+id/action_contraFragment_to_heightWeightHomeFragment"-->
+        <!--            app:clearTask="true"-->
+        <!--            app:destination="@id/HeightWeightHomeFragment"-->
+        <!--            app:launchSingleTop="true" />-->
+
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_contraFragment"
+        app:destination="@id/contraindicationFragment" />
+
+</navigation>

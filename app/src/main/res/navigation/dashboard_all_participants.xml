@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_participants_home.xml"
+    app:startDestination="@id/allParticipantsFragment">
+
+    <fragment
+        android:id="@+id/allParticipantsFragment"
+        android:name="org.singapore.ghru.ui.dashboard.allparticipants.AllParticipantsFragment"
+        android:label="AllParticipantFragment"
+        tools:layout="@layout/all_participants_fragment">
+
+    </fragment>
+
+</navigation>

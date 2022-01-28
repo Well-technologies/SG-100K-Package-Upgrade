@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="measurement"
+            type="org.singapore.ghru.vo.VisualAcuityData" />
+
+        <import type="org.singapore.ghru.ui.visualacuity.righteye.RightEyeViewModel" />
+
+        <variable
+            name="viewModel"
+            type="org.singapore.ghru.ui.visualacuity.righteye.RightEyeViewModel" />
+
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:navGraph="@navigation/body_measurements"
+        tools:context="org.singapore.ghru.BodyMeasurementsActivity"
+        tools:ignore="MergeRootFrame">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Right eye"
+                app:titleTextColor="@color/white" />
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:divider="@drawable/divider"
+            android:dividerPadding="@dimen/one_dp"
+            android:drawableEnd="@drawable/ic_seperator"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:showDividers="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/rightR1TextLayout"
+                    android:layout_width="@dimen/margin_200"
+                    android:layout_height="@dimen/bp_text_width"
+                    android:layout_marginTop="@dimen/margin_32"
+                    android:layout_marginBottom="@dimen/margin_24"
+                    android:layout_marginStart="@dimen/margin_24"
+                    android:background="@drawable/ic_input_field_text"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:textAlignment="viewStart"
+                    android:textColorHint="@color/enum_hint_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/rightR1EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@color/transparent"
+                        android:gravity="center_vertical|start"
+                        android:hint="@string/eye_reading_one"
+                        android:inputType="number"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_font_size"
+                        android:translationY="3dp"
+                        app:validateEmpty="@{true}"
+                        app:validateRegex='@{"^(?!\\s)^([a-zA-Z0-9 !-~]){1,}$"}'
+                        android:text="@={measurement.letter_score}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:text="@string/bp_units_cm"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/rightR2TextLayout"
+                    android:layout_width="@dimen/margin_200"
+                    android:layout_height="@dimen/bp_text_width"
+                    android:layout_marginBottom="@dimen/margin_24"
+                    android:layout_marginStart="@dimen/margin_24"
+                    android:background="@drawable/ic_input_field_text"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:textAlignment="viewStart"
+                    android:textColorHint="@color/enum_hint_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/rightR2EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@color/transparent"
+                        android:gravity="center_vertical|start"
+                        android:hint="@string/eye_reading_two"
+                        android:inputType="number"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_font_size"
+                        android:translationY="3dp"
+                        app:validateEmpty="@{true}"
+                        app:validateRegex='@{"^(?!\\s)^([a-zA-Z0-9 !-~]){1,}$"}'
+                        android:text="@={measurement.acuity_score}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:text="@string/bp_units_cm"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/rightR3TextLayout"
+                    android:layout_width="@dimen/margin_200"
+                    android:layout_height="@dimen/bp_text_width"
+                    android:layout_marginBottom="@dimen/margin_24"
+                    android:layout_marginStart="@dimen/margin_24"
+                    android:background="@drawable/ic_input_field_text"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/margin_normal"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="@dimen/margin_normal"
+                    android:textAlignment="viewStart"
+                    android:textColorHint="@color/enum_hint_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/rightR3EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@color/transparent"
+                        android:gravity="center_vertical|start"
+                        android:hint="@string/eye_reading_three"
+                        android:inputType="number"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/default_font_size"
+                        android:translationY="3dp"
+                        app:validateEmpty="@{true}"
+                        app:validateRegex='@{"^(?!\\s)^([a-zA-Z0-9 !-~]){1,}$"}'
+                        android:text="@={measurement.logmar_score}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_normal"
+                    android:text="@string/bp_units_cm"
+                    android:textSize="20sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_24"
+                android:background="@drawable/ic_seperator"/>
+
+            <LinearLayout
+                android:id="@+id/contactRelationshipTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:layout_weight="0.5"
+                android:background="@drawable/ic_input_field_text"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/margin_normal"
+                android:paddingTop="14dp"
+                android:paddingEnd="@dimen/margin_normal"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/enum_hint_color"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/device_id"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/deviceIdSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-9dp"
+                    android:layout_marginTop="-12dp"
+                    android:background="@color/transparent"
+                    android:gravity="center_vertical|start"
+                    android:singleLine="true"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_gray"
+                    android:textSize="@dimen/default_font_size"
+                    android:translationY="3dp" />
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textView_device_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="@string/select_device"
+                android:textColor="@color/red"
+                android:textSize="15sp"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_10"
+                android:visibility="gone"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="@dimen/margin_24"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:background="@drawable/ic_comment_background"
+                android:gravity="top|start"
+                android:hint="@string/comments_notes_optional"
+                android:inputType="textCapWords|textCapSentences|textPersonName"
+                android:padding="24dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textColorHint="@color/enum_hint_color"
+                android:textSize="@dimen/default_font_size"/>
+
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:layout_marginBottom="@dimen/margin_24"
+                android:background="@drawable/ic_button_fill_primary"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/spirometry_button_record_measurement"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_font_size" />
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_32"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_32"
+                android:layout_marginBottom="@dimen/margin_24"
+                android:background="@drawable/ic_button_revisited_household"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/defult_blue"
+                android:textSize="@dimen/default_font_size"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

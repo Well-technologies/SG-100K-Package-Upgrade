@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/scanBarcodeFragment">
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.skin.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/fundoscopy_scan_barcode">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraFragment"
+            app:clearTask="true"
+            app:destination="@id/contraFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualFragment"
+            app:destination="@id/manualFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualFragment"
+        android:name="org.singapore.ghru.ui.skin.manualentry.ManualEntrySkinFragment"
+        android:label="ManualEntrySkinFragment"
+        tools:layout="@layout/fundoscopy_manual_barcode_fragment">
+        <action
+            android:id="@+id/action_manual_to_contraFragment"
+            app:clearTask="true"
+            app:destination="@id/contraFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contraFragment"
+        android:name="org.singapore.ghru.ui.skin.contra.SkinQuestionsFragment"
+        android:label="SkinQuestionsFragment"
+        tools:layout="@layout/skin_contra_fragment">
+        <action
+            android:id="@+id/action_contra_readingFragment"
+            app:destination="@id/readingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/readingFragment"
+        android:name="org.singapore.ghru.ui.skin.reading.SkinReadingFragment"
+        android:label="SkinReadingFragment"
+        tools:layout="@layout/skin_reading_fragment">
+
+    </fragment>
+
+</navigation>

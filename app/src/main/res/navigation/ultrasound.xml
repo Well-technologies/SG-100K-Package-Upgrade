@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ultrasound"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.ultrasound.scanbarcode.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/contraindicationFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.ultrasound.manualentry.ManualEntryUltrasoundFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualScanFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/contraindicationFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/contraindicationFragment"
+        android:name="org.singapore.ghru.ui.ultrasound.contraindications.UltrasoundContraFragment"
+        android:label="UltrasoundContraFragment"
+        tools:layout="@layout/ultrasound_contra_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_readingFragment"
+            app:clearTask="true"
+            app:destination="@id/readingFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/readingFragment"
+        android:name="org.singapore.ghru.ui.ultrasound.UltraSoundReadingFragment"
+        android:label="UltraSoundReadingFragment"
+        tools:layout="@layout/ultra_sound_reading_fragment">
+
+        <!--        <action-->
+        <!--            android:id="@+id/action_contraFragment_to_heightWeightHomeFragment"-->
+        <!--            app:clearTask="true"-->
+        <!--            app:destination="@id/HeightWeightHomeFragment"-->
+        <!--            app:launchSingleTop="true" />-->
+
+    </fragment>
+
+</navigation>

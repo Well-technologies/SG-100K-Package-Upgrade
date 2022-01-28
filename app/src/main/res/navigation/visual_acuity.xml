@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gripStrength"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.visualacuity.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_visualAidFragment"
+            app:clearTask="true"
+            app:destination="@id/VisualAidFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.visualacuity.manualentry.ManualEntryVisualAcuityFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualFragment_to_visualAidFragment"
+            app:clearTask="true"
+            app:destination="@id/VisualAidFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/VisualAcuityContraFragment"-->
+<!--        android:name="org.singapore.ghru.ui.visualacuity.contraindication.VisualAcuityQuestionnaireFragment"-->
+<!--        android:label="ContraindicationFragment"-->
+<!--        tools:layout="@layout/visual_acuity_contra_fragment">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_contraFragment_to_VisualAidFragment"-->
+<!--            app:destination="@id/VisualAidFragment" />-->
+
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/VisualAidFragment"
+        android:name="org.singapore.ghru.ui.visualacuity.visualaid.VisualAcuityAidFragment"
+        android:label="VisualAidFragment"
+        tools:layout="@layout/visual_acuity_aid_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_VisualAcuityHomeFragment"
+            app:destination="@id/VisualAcuityHomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/VisualAcuityHomeFragment"
+        android:name="org.singapore.ghru.ui.visualacuity.home.VisualAcuityHomeFragment"
+        android:label="VisualAcuityHomeFragment"
+        tools:layout="@layout/visual_acuity_home_fragment">
+
+        <action
+            android:id="@+id/action_VisualAcuityHomeFragment_to_LeftEyeFragment"
+            app:destination="@id/LeftEyeFragment" />
+        <action
+            android:id="@+id/action_VisualAcuityHomeFragment_to_RightEyeFragment"
+            app:destination="@id/RightEyeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/LeftEyeFragment"
+        android:name="org.singapore.ghru.ui.visualacuity.lefteye.LeftEyeFragment"
+        android:label="LeftEyeFragment"
+        tools:layout="@layout/left_eye_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/RightEyeFragment"
+        android:name="org.singapore.ghru.ui.visualacuity.righteye.RightEyeFragment"
+        android:label="RightEyeFragment"
+        tools:layout="@layout/right_eye_fragment">
+
+    </fragment>
+
+</navigation>

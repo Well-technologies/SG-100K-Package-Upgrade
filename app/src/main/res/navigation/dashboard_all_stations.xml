@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_station_home.xml"
+    app:startDestination="@id/allStationFragment">
+
+    <fragment
+        android:id="@+id/allStationFragment"
+        android:name="org.singapore.ghru.ui.dashboard.AllStationsFragment"
+        android:label="AllStationFragment"
+        tools:layout="@layout/all_stations_fragment">
+
+        <action
+            android:id="@+id/action_allStationFragment_to_selectedStationFragment"
+            app:destination="@id/selectedStationFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/selectedStationFragment"
+        android:name="org.singapore.ghru.ui.dashboard.selectedstation.SelectedStationFragment"
+        android:label="SelectedStationFragment"
+        tools:layout="@layout/selected_station_fragment">
+
+    </fragment>
+
+</navigation>

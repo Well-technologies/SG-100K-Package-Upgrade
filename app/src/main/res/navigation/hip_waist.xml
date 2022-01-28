@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hipWaist"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.hipwaist.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/HipWaistContraFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.hipwaist.manualentry.ManualEntryHipWaistFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualScanFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/HipWaistContraFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HipWaistContraFragment"
+        android:name="org.singapore.ghru.ui.hipwaist.contraindication.HipWaistQuestionnaireFragment"
+        android:label="ContraindicationFragment"
+        tools:layout="@layout/hip_waist_contraindication_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_hipWaistHomeFragment"
+            app:destination="@id/HipWaistHomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HipWaistHomeFragment"
+        android:name="org.singapore.ghru.ui.hipwaist.home.HipWaistHomeFragment"
+        android:label="HipWaistHomeFragment"
+        tools:layout="@layout/hip_waist_home_fragment">
+
+        <action
+            android:id="@+id/action_HipWaistHomeFragment_to_HipFragment"
+            app:destination="@id/HipFragment" />
+        <action
+            android:id="@+id/action_HipWaistHomeFragment_to_WaistFragment"
+            app:destination="@id/WaistFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HipFragment"
+        android:name="org.singapore.ghru.ui.hipwaist.hip.HipFragment"
+        android:label="HipFragment"
+        tools:layout="@layout/hip_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/WaistFragment"
+        android:name="org.singapore.ghru.ui.hipwaist.waist.WaistFragment"
+        android:label="WaistFragment"
+        tools:layout="@layout/waist_fragment">
+
+    </fragment>
+
+</navigation>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="homeItem"
+            type="org.singapore.ghru.vo.HomeItem" />
+    </data>
+
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:foreground="?attr/selectableItemBackground">-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="6"
+            android:layout_marginTop="@dimen/margin_10"
+            android:foreground="?attr/selectableItemBackground">
+
+            <ImageView
+                android:id="@+id/imageViewIcon"
+                image="@{homeItem.resourceId}"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/imageview"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_weight="4.7"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{homeItem.name}"
+                android:textColor="#171717"
+                android:textSize="16sp"
+                tools:text="repository name"
+                android:drawableEnd="@drawable/ic_icon_arrow_front_e"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_seperator"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_marginStart="@dimen/margin_24"/>
+
+    </LinearLayout>
+
+
+</layout>

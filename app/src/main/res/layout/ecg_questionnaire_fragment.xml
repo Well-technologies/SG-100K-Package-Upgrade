@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="participant"
+            type="org.singapore.ghru.vo.request.ParticipantRequest" />
+
+        <import type="org.singapore.ghru.ui.ecg.questions.ECGQuestionnaireViewModel" />
+
+        <variable
+            name="viewModel"
+            type="org.singapore.ghru.ui.ecg.questions.ECGQuestionnaireViewModel" />
+
+
+        <variable
+            name="resource"
+            type="org.singapore.ghru.vo.Resource" />
+
+        <variable
+            name="retryCallback"
+            type="org.singapore.ghru.ui.common.RetryCallback" />
+
+        <variable name="radioGroupArteriovenousValue" type="Boolean"/>
+        <variable name="radioGroupSurgeryValue" type="Boolean"/>
+        <variable name="radioGroupLymphValue" type="Boolean"/>
+        <variable name="radioGroupTraumaValue" type="Boolean"/>
+        <variable name="radioGroupNeckInjuryValue" type="Boolean"/>
+        <variable name="radioGroupAmputatedValue" type="Boolean"/>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:navGraph="@navigation/body_measurements"
+        tools:context="org.singapore.ghru.BodyMeasurementsActivity"
+        tools:ignore="MergeRootFrame">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/ecg_title"
+                app:titleTextColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="93dp"
+                android:background="?colorPrimary"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="@dimen/margin_32"
+                        android:layout_height="@dimen/margin_32"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:background="@drawable/ic_ellipse_green"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="@dimen/margin_normal"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/app_questionnaire"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+                    <LinearLayout
+                        android:id="@+id/divider1"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="@dimen/margin_32"
+                        android:layout_height="@dimen/margin_32"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:background="@drawable/ic_ellipse_white"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="38dp"
+                        android:layout_marginBottom="@dimen/margin_normal"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/app_guide"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                    <LinearLayout
+                        android:id="@+id/divider3"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView13"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:layout_marginEnd="12dp"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toStartOf="@+id/textView13"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="@dimen/margin_32"
+                        android:layout_height="@dimen/margin_32"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:background="@drawable/ic_ellipse_white"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="38dp"
+                        android:layout_marginBottom="@dimen/margin_normal"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/ecg_input"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView14"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:layout_marginEnd="12dp"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toStartOf="@+id/textView14"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="@dimen/margin_32"
+                        android:layout_height="@dimen/margin_32"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="@dimen/margin_normal"
+                        android:background="@drawable/ic_ellipse_white"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="38dp"
+                        android:layout_marginBottom="@dimen/margin_normal"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/ecg_trace"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/margin_normal"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView16"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_32"
+                        android:layout_marginEnd="12dp"
+                        android:background="@color/top_line_color"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toStartOf="@+id/textView16"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:divider="@drawable/divider"
+            android:dividerPadding="1dp"
+            android:drawableEnd="@drawable/ic_seperator"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:showDividers="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:layout_marginBottom="64dp"
+                android:focusableInTouchMode="true"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="10dp">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_margin="10dp"
+                            android:contentDescription="@string/imageview"
+                            app:srcCompat="@drawable/icon_user" />
+
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/roboto"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/gray_ellipse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{participant.gender}"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/gray_ellipse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{participant.age.ageInYears.toString() +'Y' }"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <ImageView
+                            android:layout_width="5dp"
+                            android:layout_height="5dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="30dp"
+                            app:srcCompat="@drawable/gray_ellipse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{participant.screeningId }"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="start">
+
+                        <TextView
+                            android:id="@+id/textViewArteriovenous"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/ecg_arteriovenous_question"
+                            android:textSize="@dimen/default_font_size"
+                            android:layout_marginStart="@dimen/margin_20"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupArteriovenous"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/yesArteriovenous"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_yes"
+                                android:textSize="20sp" />
+
+                            <RadioButton
+                                android:id="@+id/noArteriovenous"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_no"
+                                android:textSize="20sp" />
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            visibleGone="@{ radioGroupArteriovenousValue }"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:background="@color/error_banner_color"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/textView19ss"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|start"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/app_error_yes_or_no"
+                                android:textColor="#DE000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonBackToHomeFive"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textViewSurgery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/ecg_breast_surgery_question"
+                            android:textSize="@dimen/default_font_size"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupSurgery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_32"
+                            android:orientation="horizontal">
+
+
+                            <RadioButton
+                                android:id="@+id/leftSurgery"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_marginStart="@dimen/margin_10"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_left"
+                                android:textSize="20sp"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/rightSurgery"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_right"
+                                android:textSize="20sp" />
+
+
+                            <RadioButton
+                                android:id="@+id/bothSurgery"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_marginStart="@dimen/margin_20"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_both"
+                                android:textSize="20sp" />
+
+                            <RadioButton
+                                android:id="@+id/noSurgery"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_no"
+                                android:textSize="20sp" />
+
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            visibleGone="@{ radioGroupSurgeryValue }"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:background="@color/error_banner_color"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|start"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/catract_error"
+                                android:textColor="#DE000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonBackToHomeFive"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textViewLymph"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/ecg_lymph_question"
+                            android:textSize="@dimen/default_font_size"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupLymph"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <RadioButton
+                                android:id="@+id/yesLymph"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_yes"
+                                android:textSize="20sp" />
+
+                            <RadioButton
+                                android:id="@+id/noLymph"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_no"
+                                android:textSize="20sp" />
+
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            visibleGone="@{ radioGroupLymphValue }"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:background="@color/error_banner_color"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|start"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/app_error_yes_or_no"
+                                android:textColor="#DE000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonBackToHomeFive"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textViewTrauma"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/ecg_trauma_question"
+                            android:textSize="@dimen/default_font_size"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupTrauma"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginEnd="@dimen/margin_32"
+                            android:orientation="horizontal">
+
+
+                            <RadioButton
+                                android:id="@+id/leftTrauma"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_marginStart="@dimen/margin_10"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_left"
+                                android:textSize="20sp"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/rightTrauma"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_right"
+                                android:textSize="20sp" />
+
+
+                            <RadioButton
+                                android:id="@+id/bothTrauma"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_marginStart="@dimen/margin_20"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_both"
+                                android:textSize="20sp" />
+
+                            <RadioButton
+                                android:id="@+id/noTrauma"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.25"
+                                android:layout_marginBottom="@dimen/margin_20"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/cataract_no"
+                                android:textSize="20sp" />
+
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            visibleGone="@{ radioGroupTraumaValue }"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:background="@color/error_banner_color"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|start"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/catract_error"
+                                android:textColor="#DE000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonBackToHomeFive"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textViewNeck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/ecg_neck_injury_question"
+                            android:textSize="@dimen/default_font_size"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupNeck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <RadioButton
+                                android:id="@+id/yesNeck"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_yes"
+                                android:textSize="20sp" />
+
+                            <RadioButton
+                                android:id="@+id/noNeck"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_no"
+                                android:textSize="20sp" />
+
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            visibleGone="@{ radioGroupNeckInjuryValue }"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:background="@color/error_banner_color"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|start"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/app_error_yes_or_no"
+                                android:textColor="#DE000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonBackToHomeFive"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/textViewAmputate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/ecg_amputated_question"
+                            android:textSize="@dimen/default_font_size"
+                            android:layout_marginStart="@dimen/margin_20"
+                            android:layout_marginTop="@dimen/margin_20"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupAmputate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+
+                            <RadioButton
+                                android:id="@+id/yesAmputate"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:layout_marginEnd="@dimen/margin_normal"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_yes"
+                                android:textSize="20sp" />
+
+                            <RadioButton
+                                android:id="@+id/noAmputate"
+                                android:layout_width="@dimen/height_260"
+                                android:layout_height="56dp"
+                                android:background="@drawable/radio_button_selector"
+                                android:button="@android:color/transparent"
+                                android:gravity="center"
+                                android:text="@string/app_no"
+                                android:textSize="20sp" />
+
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            visibleGone="@{ radioGroupAmputatedValue }"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_24"
+                            android:background="@color/error_banner_color"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical|start"
+                                android:layout_marginStart="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/roboto"
+                                android:text="@string/app_error_yes_or_no"
+                                android:textColor="#DE000000"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonBackToHomeFive"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_seperator" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/bottom_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="@drawable/ic_bottom_background"
+                    android:gravity="center_vertical">
+
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/previousButton"-->
+                    <!--                        android:layout_width="@dimen/height_60"-->
+                    <!--                        android:layout_height="match_parent"-->
+                    <!--                        android:layout_alignParentStart="true"-->
+                    <!--                        android:layout_marginStart="30dp"-->
+                    <!--                        android:background="@color/transparent"-->
+                    <!--                        android:drawableStart="@drawable/ic_bottom_previous_arrow"-->
+                    <!--                        android:foregroundGravity="center_horizontal" />-->
+
+                    <Button
+                        android:id="@+id/nextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/transparent"
+                        android:drawableEnd="@drawable/ic_bottom_next_arrow"
+                        android:drawablePadding="@dimen/margin_normal"
+                        android:fontFamily="@font/roboto_bold"
+                        android:foregroundGravity="center_horizontal"
+                        android:padding="10dp"
+                        android:text="@string/next"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/default_font_size" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

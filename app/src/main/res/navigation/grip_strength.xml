@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gripStrength"
+    app:startDestination="@id/scanBarcodeFragment">
+
+
+    <fragment
+        android:id="@+id/scanBarcodeFragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.scanbarcode.ScanBarcodeFragment"
+        android:label="ScanBarcodeFragment"
+        tools:layout="@layout/scan_barcode_patient_fragment">
+
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/GripStrengthContraFragment"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_scanBarcodeFragment_to_manualScanFragment"
+            app:destination="@id/manualScanFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/manualScanFragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.manualentry.ManualEntryGripStrengthFragment"
+        android:label="ManualEntryFragment"
+        tools:layout="@layout/manual_entry_body_measurement_fragment">
+        <action
+            android:id="@+id/action_manualScanFragment_to_contraindicationFragment"
+            app:clearTask="true"
+            app:destination="@id/GripStrengthContraFragment"
+            app:launchSingleTop="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/GripStrengthContraFragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.contraindication.GripStrengthQuestionnaireFragment"
+        android:label="ContraindicationFragment"
+        tools:layout="@layout/grip_strength_contraindication_fragment">
+
+        <action
+            android:id="@+id/action_contraFragment_to_gripStrengthHomeFragment"
+            app:destination="@id/GripStrengthHomeFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/GripStrengthHomeFragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.GripStrengthHomeFragment"
+        android:label="GripStrengthHomeFragment"
+        tools:layout="@layout/grip_strength_home_fragment">
+
+        <action
+            android:id="@+id/action_GripStrengthHomeFragment_to_GripFragment"
+            app:destination="@id/GripFragment" />
+        <action
+            android:id="@+id/action_GripStrengthHomeFragment_to_StrengthFragment"
+            app:destination="@id/StrengthFragment" />
+
+        <action
+            android:id="@+id/action_GripStrengthHomeFragment_to_Reading3Fragment"
+            app:destination="@id/Reading3Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/GripFragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.grip.GripFragment"
+        android:label="GripFragment"
+        tools:layout="@layout/grip_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/StrengthFragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.strength.StrengthFragment"
+        android:label="StrengthFragment"
+        tools:layout="@layout/strength_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/Reading3Fragment"
+        android:name="org.singapore.ghru.ui.gripstrangth.reading3.Reading3Fragment"
+        android:label="Reading3Fragment"
+        tools:layout="@layout/grip_reading3_fragment">
+
+    </fragment>
+
+</navigation>
